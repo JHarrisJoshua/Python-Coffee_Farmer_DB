@@ -1,0 +1,23 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+  <div id="add" style="display: block">
+    <h2><strong>Add Country</strong></h2>
+    <p>&nbsp;</p>
+  </div>
+
+  <div id="insert" style="display: block">
+  <form id="insertCountry" action="/countries/add" method="post">
+    <fieldset class="fields">
+        <label> Country </label> <input type="text" class="form-control" name="country" id="country" required>
+        <label> Quantity Exported (60kg bags) </label> <input type="number" class="form-control" min="0" step="1" pattern="/d+" name="exportqty" id="exportqty" required>
+        <label> Exports USD ($1,000) </label> <input type="number" class="form-control"  min="0" step="1" pattern="/d+" name="exportusd" id="exportusd" required>
+        <label> Cultivated Area (hectares) </label> <input type="number" class="form-control"  min="0" step="1" pattern="/d+" name="area" id="area" required>
+    </fieldset>
+    <p>&nbsp;</p>
+    <input type="submit" value="Add Country" name="add_country" class="btn btn-primary">
+    <a href='/countries'><input class="btn btn-primary" type="button" value="Cancel"></a>
+  </form>
+  </div>
+
+{% endblock %}

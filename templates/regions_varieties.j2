@@ -1,0 +1,55 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+
+  <div id="browse" style="display: block">
+    <nav class="navbar">
+    <h2><strong>Browse Regions and Varieties</strong></h2>
+    <a href="/regions-varieties/add" class="btn btn-success">Add Suitable Region-Variety</a>
+    </nav><p>&nbsp;</p>
+
+  <div id="search" style="display: block">
+    <form id="searchregion" action="/regions-varieties/" method="post">
+    <fieldset class="fields">
+      <label> View Suitable Varieties by Region </label> 
+      <select class="form-select" name="region_id" id="region_id">
+        <option value="0" selected>All Regions</option>
+        {% for region in regions %}
+            <option value="{{ region['region_id'] }}"> {{ region['region'] }}</option> 
+        {% endfor %}
+      </select>
+      </fieldset>
+      <input type="submit" value="View Suitable Varieties" name="region_variety_search" class="btn btn-success"> <p>&nbsp;</p>
+  </form>
+  </div>
+
+  <div id="browse" style="display: block">
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th>
+        <th>Plant Name</th>
+        <th>Rust Resistance</th>
+        <th>Nematode Resistance</th>
+        <th>Altitude</th>
+        <th>Rainfall</th>
+        <th>Temperature</th>
+        <th>Region</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <tbody>
+      {% for region_variety in regions_varieties %}
+      <tr>
+        {% for key in region_variety.keys() %}
+        <td>{{ region_variety[key] }}</td>
+        {% endfor %}
+        <td><a href="/regions-varieties/edit/{{region_variety.region_plant_id }}" class="btn btn-outline-success">Edit</a></td>
+        <td><a href="/regions-varieties/delete/{{region_variety.region_plant_id }}" class="btn btn-outline-success" onClick="return confirm('Are you sure you want to delete this entry?' );">Delete</a></td>
+      </tr>
+      {% endfor %}
+      </table>
+    <p>&nbsp;</p>
+  </div>
+
+{% endblock %}

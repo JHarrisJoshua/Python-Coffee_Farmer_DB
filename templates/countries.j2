@@ -1,0 +1,39 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+    <div id="browse" style="display: block">
+      
+    <nav class="navbar">
+    <h2><strong>Browse Countries</strong></h2>
+    <a href="/countries/add" class="btn btn-success">Add Country</a>
+    </nav>
+
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Country</th>
+        <th>Quantity Exported (60kg bags)</th>
+        <th>Exports USD ($1,000) </th>
+        <th>Cultivated Area (hectares) </th>
+    </tr>
+
+    <tbody>
+    {% for country in countries %}
+    <tr>
+        {% for key in country.keys() %}
+        
+        {% if country[key] is number and key != "country_id" %}
+          <td align="right">{{"{:,.0f}".format(country[key])}}</td>
+        {% else %}
+          <td>{{country[key]}}</td>
+        {% endif %}
+        
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+    <p>&nbsp;</p>
+  </div>
+
+{% endblock %}

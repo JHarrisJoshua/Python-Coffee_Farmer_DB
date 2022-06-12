@@ -1,0 +1,23 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+  <div id="add" style="display: block">
+    <h2><strong>Add Organization</strong></h2>
+    <p>&nbsp;</p>
+  </div>
+
+  <div id="insert" style="display: block">
+  <form id="insertOrg" action="/organizations/add" method="post">
+    <fieldset class="fields">
+      <label> Name </label> <input type="text" class="form-control" id="name" name="name" required>
+          <label> Type </label> <select class="form-select" name="type" id="type">
+          <option value="Rights Holder" selected>Rights Holder</option>
+          <option value="Breeder">Breeder</option> </select>
+    </fieldset>
+    <p>&nbsp;</p>
+    <input type="submit" value="Add Organization" name="add_org" class="btn btn-primary">
+    <a href='/organizations'><input class="btn btn-primary" type="button" value="Cancel"></a>
+  </form>
+  </div>
+
+{% endblock %}

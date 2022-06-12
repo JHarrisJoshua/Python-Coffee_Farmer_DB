@@ -1,0 +1,39 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+  <div id="browse" style="display: block">
+    <nav class="navbar">
+    <h2><strong>Browse Regions</strong></h2>
+    <a href="/regions/add" class="btn btn-success">Add Region</a>
+    </nav>
+
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Region</th>
+        <th>Altitude</th>
+        <th>Soil Type</th>
+        <th>Rainfall</th>
+        <th>Temp</th>
+        <th>Country</th>
+        <th></th>
+      </tr>
+
+      <tbody>
+      {% for region in regions %}
+      <tr>
+        {% for key in region.keys() %}
+        <td>{{region[key]}}</td>
+        {% endfor %}
+        <td>
+        <a href="/regions/delete/{{region.region_id}}" class="btn btn-outline-success" onClick="return confirm('Are you sure you want to delete?' );">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+      </table>
+    <p>&nbsp;</p>
+  </div> <!-- browse -->
+
+{% endblock %}
+

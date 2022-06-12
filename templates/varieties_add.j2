@@ -1,0 +1,66 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+  <div id="add" style="display: block">
+    <h2><strong>Add Variety</strong></h2>
+    <p>&nbsp;</p>
+  </div>
+
+  <div id="insert" style="display: block">
+  <form id="insertVariety" action="/varieties/add" method="post">
+    <fieldset class="fields">
+      <label> Name </label> <input type="text" class="form-control" id="name" name="name" required>
+
+      <label>Rust Resistance</label> <select class="form-select" name="rust_resist" id="rust_resist">
+        <option value="low">low</option>
+        <option value="med" selected="selected">med</option>
+        <option value="high">high</option>
+      </select>
+
+      <label>Nematode Resistance</label> <select class="form-select" name="nematode_resist" id="nematode_resist">
+        <option value="low">low</option>
+        <option value="med" selected="selected">med</option>
+        <option value="high">high</option>
+      </select>
+
+      <label>Optimal Altitude</label> <select class="form-select" name="altitude" id="altitude">
+        <option value="low">low</option>
+        <option value="med" selected="selected">med</option>
+        <option value="high">high</option>
+      </select>
+
+      <label>Optimal Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
+        <option value="low">low</option>
+        <option value="med" selected="selected">med</option>
+        <option value="high">high</option>
+      </select>
+
+      <label>Optimal Temperature</label> <select class="form-select" name="temperature" id="temperature">
+        <option value="low">low</option>
+        <option value="med" selected="selected">med</option>
+        <option value="high">high</option>
+      </select>
+
+      <label> Organization/Breeder </label> <select class="form-select" name="organization_id" id="organization_id">
+        <option value="0" selected>None</option>
+        {% for org in organizations %}
+            <option value="{{ org['organization_id'] }}"> {{org['name']}}</option> 
+        {% endfor %}
+      </select>
+
+      <label>Type</label> <select class="form-select" name="type_id" id="type_id">
+        {% for type in types %}
+            {% if type['type_id'] == 1 %}
+                <option value="{{ type['type_id'] }}" selected> {{type['name']}}</option>
+            {% else %}
+                <option value="{{ type['type_id'] }}"> {{type['name']}}</option> 
+            {% endif %}
+        {% endfor %}
+      </select>
+    </fieldset><p>&nbsp;</p>
+    <input type="submit" value="Add Variety" name="add_variety" class="btn btn-primary">
+    <a href='/varieties'><input class="btn btn-primary" type="button" value="Cancel"></a>
+  </form>
+  </div>
+
+{% endblock %}

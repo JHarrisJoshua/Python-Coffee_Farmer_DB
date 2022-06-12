@@ -1,0 +1,97 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+  <div id="edit" style="display: block">
+    <h2><strong>Edit Variety</strong></h2>
+    <p>&nbsp;</p>
+  </div>
+
+  <div id="update" style="display: block"></div>
+  <form id="updateVariety" action="/varieties/edit/{{data[0].plant_id}}" method="post">
+    <fieldset class="fields">
+    
+      <label> <strong>ID: {{data[0].plant_id}}</strong></label> <br>
+      <label> Name </label> <input class="form-control" type="text" name="name" id="name" value="{{data[0].plant_name}}" required>
+
+      </label>Rust Resistance</label> <select class="form-select" name="rust_resist" id="rust_resist">
+            {% for value in ['low','med', 'high'] %}
+                {% if value == data[0].rust_resist %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option> 
+                {% endif %}
+            {% endfor %}
+      </select>
+
+      </label>Nematode Resistance</label> <select class="form-select" name="nematode_resist" id="nematode_resist">
+            {% for value in ['low','med', 'high'] %}
+                {% if value == data[0].nematode_resist %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option> 
+                {% endif %}
+            {% endfor %}
+      </select>
+
+      </label>Optimal Altitude</label> <select class="form-select" name="altitude" id="altitude">
+            {% for value in ['low','med', 'high'] %}
+                {% if value == data[0].optimal_altitude %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option> 
+                {% endif %}
+            {% endfor %}
+      </select>
+
+      </label>Optimal Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
+            {% for value in ['low','med', 'high'] %}
+                {% if value == data[0].optimal_rainfall %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option> 
+                {% endif %}
+            {% endfor %}
+      </select>
+
+      </label>Optimal Temperature</label> <select class="form-select" name="temperature" id="temperature">
+            {% for value in ['low','med', 'high'] %}
+                {% if value == data[0].optimal_temp %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option> 
+                {% endif %}
+            {% endfor %}
+      </select> 
+
+      <label> Organization/Breeder </label> <select class="form-select" class="form-control" name="organization_id" id="organization_id">
+        {% if data[0].name is none %}        
+            <option value="0" selected>None</option>
+        {% else %}
+            <option value="0">None</option>
+        {% endif %}
+        {% for org in organizations %}
+            {% if data[0].name == org.name %}
+                <option value="{{ org['organization_id'] }}" selected> {{org['name']}}</option> 
+            {% else %}
+                <option value="{{ org['organization_id'] }}"> {{org['name']}}</option>
+            {% endif %}
+        {% endfor %} 
+      </select> 
+
+      </label>Type</label> <select class="form-select" name="type_id" id="type_id">
+        {% for type in types %}
+            {% if type['name'] == data[0]['Types.name'] %}
+                <option value="{{ type['type_id'] }}" selected> {{type['name']}}</option>
+            {% else %}
+                <option value="{{ type['type_id'] }}"> {{type['name']}}</option> 
+            {% endif %}
+        {% endfor %}   
+      </select>
+      
+    </fieldset><p>&nbsp;</p>
+    <input type="submit" value="Submit" name="edit_variety" class="btn btn-primary">
+    <a href='/varieties'><input class="btn btn-primary" type="button" value="Cancel"></a>
+  </form>
+  </div>
+
+{% endblock %}
