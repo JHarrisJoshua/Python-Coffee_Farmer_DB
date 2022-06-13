@@ -1,21 +1,22 @@
 import MySQLdb
 import os
 from dotenv import load_dotenv, find_dotenv
+import psycopg2
 
 # Load our environment variables from the .env file in the root of our project.
 load_dotenv(find_dotenv())
 
 # Set the variables in our application with those environment variables
-host = os.environ.get("HOST")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 user = os.environ.get("USER")
 passwd = os.environ.get("PW")
 db = os.environ.get("DB")
 
-def connect_to_database(host = host, user = user, passwd = passwd, db = db):
+def connect_to_database(DATABASE_URL):
     '''
     connects to a database and returns a database objects
     '''
-    db_connection = MySQLdb.connect(host,user,passwd,db)
+    db_connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     return db_connection
 
 def execute_query(db_connection = None, query = None, query_params = ()):
