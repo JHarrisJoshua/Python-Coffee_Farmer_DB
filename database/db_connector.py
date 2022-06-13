@@ -12,7 +12,7 @@ user = os.environ.get("USER")
 passwd = os.environ.get("PW")
 db = os.environ.get("DB")
 
-def connect_to_database(DATABASE_URL):
+def connect_to_database():
     '''
     connects to a database and returns a database objects
     '''
