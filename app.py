@@ -16,7 +16,6 @@ import database.db_connector as db
 
 app = Flask(__name__)
 db_connection = db.connect_to_database()
-db_connection.ping(True)
 
 # Register Flask Blueprints
 app.register_blueprint(varieties_view, url_prefix='/varieties')
