@@ -29,8 +29,6 @@ app.register_blueprint(organizations_view, url_prefix='/organizations')
 # Route to Index 
 @app.route('/')
 def root():
-    db_connection = db.connect_to_database()
-    db_connection.ping(True)
     return render_template("index.j2")
 
 # Listener
