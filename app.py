@@ -1,13 +1,3 @@
-# Citations for the following program - 
-# Date: 5/14/2020
-# Adapted from -
-# Source URL:  https://github.com/osu-cs340-ecampus/flask-starter-app
-# Source URL: https://flask.palletsprojects.com/en/2.1.x/blueprints/
-# Source URL: https://stackoverflow.com/questions/24579581/how-to-do-confirmation-in-a-form-before-submit
-# Source URL: https://getbootstrap.com/
-# Source URL: https://icon-icons.com/
-
-
 from flask import Flask, Blueprint, render_template, json, redirect
 from flask_mysqldb import MySQL
 from flask import request
