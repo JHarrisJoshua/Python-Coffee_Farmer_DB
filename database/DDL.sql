@@ -1,5 +1,5 @@
--- Group 14 - Coffee Farmer's Almanac
--- Joshua Harris and Tim Romanowich
+-- Coffee Farmer's Almanac
+-- Joshua Harris
 -- Table structure for Coffee Database
 --
 

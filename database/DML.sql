@@ -1,6 +1,6 @@
--- Group 14 - Coffee Farmer's Almanac
--- Joshua Harris and Tim Romanowich
--- These are some Database Manipulation queries for the Coffee Farmers Database Project Website 
+-- Coffee Farmer's Almanac
+-- Joshua Harris
+-- Database Manipulation queries for the Coffee Farmer's Almanac Web Application
 
 -- Varieties Table
     -- Display genetic varieties of coffee plants (and get information for dropdowns)
@@ -77,7 +77,7 @@ SELECT region_id, region FROM Regions
 SELECT plant_id, plant_name FROM Varieties       
 
     -- Update a suitable variety of coffee for a region (M-to-M relationship update)
-    -- Retreive info for update
+    -- Retrieve info for update
 SELECT Regions_Varieties.region_plant_id, Varieties.plant_id, Varieties.plant_name, Regions.region_id, Regions.region FROM Regions_Varieties
 INNER JOIN Regions ON Regions.region_id = Regions_Varieties.region_id
 INNER JOIN Varieties ON Varieties.plant_id = Regions_Varieties.plant_id 

@@ -31,8 +31,8 @@ def root():
     return render_template("index.j2")
 
 # Listener
-if __name__ == "__main__":
-    # Local
-    port = int(os.environ.get('PORT', 51737)) 
-    app.run(port=port, debug=True)
+#if __name__ == "__main__":
+#    # Local
+#    port = int(os.environ.get('PORT', 51737))
+#    app.run(port=port, debug=True)
 
