@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv, find_dotenv
 import psycopg2
+import psycopg2.extras
 
 # Load our environment variables from the .env file in the root of our project.
 load_dotenv(find_dotenv())
