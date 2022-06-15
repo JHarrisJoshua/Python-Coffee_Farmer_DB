@@ -29,7 +29,7 @@ def regions_varieties(region_id = None):
       results = cursor.fetchall()
       
       # For Search function, populate dropdown with all regions
-      query2 = "SELECT DISTINCT Regions.region_id, Regions.region FROM Regions_Varieties INNER JOIN Regions ON Regions.region_id = Regions_Varieties.region_id ORDER BY Regions_Varieties.region_id"
+      query2 = "SELECT DISTINCT Regions.region_id, Regions.region FROM Regions_Varieties INNER JOIN Regions ON Regions.region_id = Regions_Varieties.region_id ORDER BY Regions.region"
       cursor = db.execute_query(db_connection=db_connection, query=query2)
       region_list = cursor.fetchall()
 
