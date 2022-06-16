@@ -13,7 +13,6 @@ import os
 import database.db_connector as db
 
 # Configuration
-
 app = Flask(__name__)
 db_connection = db.connect_to_database()
 
