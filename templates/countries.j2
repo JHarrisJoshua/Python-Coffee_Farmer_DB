@@ -24,7 +24,7 @@
         {% for key in country.keys() %}
         
         {% if country[key] is number and key != "country_id" %}
-          <td align="right">{{"{:,.0f}".format(country[key])}}</td>
+          <td>{{"{:,.0f}".format(country[key])}}</td>
         {% else %}
           <td>{{country[key]}}</td>
         {% endif %}
