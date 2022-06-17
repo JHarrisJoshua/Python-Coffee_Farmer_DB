@@ -44,16 +44,16 @@
       <label> Organization/Breeder </label> <select class="form-select" name="organization_id" id="organization_id">
         <option value="0" selected>None</option>
         {% for org in organizations %}
-            <option value="{{ org['organization_id'] }}"> {{org['name']}}</option> 
+            <option value="{{ org['organization_id'] }}"> {{org['org_name']}}</option>
         {% endfor %}
       </select>
 
       <label>Type</label> <select class="form-select" name="type_id" id="type_id">
         {% for type in types %}
             {% if type['type_id'] == 1 %}
-                <option value="{{ type['type_id'] }}" selected> {{type['name']}}</option>
+                <option value="{{ type['type_id'] }}" selected> {{type['type_name']}}</option>
             {% else %}
-                <option value="{{ type['type_id'] }}"> {{type['name']}}</option> 
+                <option value="{{ type['type_id'] }}"> {{type['type_name']}}</option>
             {% endif %}
         {% endfor %}
       </select>

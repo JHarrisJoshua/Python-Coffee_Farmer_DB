@@ -70,20 +70,20 @@
             <option value="0">None</option>
         {% endif %}
         {% for org in organizations %}
-            {% if data[0].name == org.name %}
-                <option value="{{ org['organization_id'] }}" selected> {{org['name']}}</option> 
+            {% if data[0].org_name == org.org_name %}
+                <option value="{{ org['organization_id'] }}" selected> {{org['org_name']}}</option>
             {% else %}
-                <option value="{{ org['organization_id'] }}"> {{org['name']}}</option>
+                <option value="{{ org['organization_id'] }}"> {{org['org_name']}}</option>
             {% endif %}
         {% endfor %} 
       </select> 
 
       </label>Type</label> <select class="form-select" name="type_id" id="type_id">
         {% for type in types %}
-            {% if type['name'] == data[0]['Types.name'] %}
-                <option value="{{ type['type_id'] }}" selected> {{type['name']}}</option>
+            {% if type['type_name'] == data[0]['type_name'] %}
+                <option value="{{ type['type_id'] }}" selected> {{type['type_name']}}</option>
             {% else %}
-                <option value="{{ type['type_id'] }}"> {{type['name']}}</option> 
+                <option value="{{ type['type_id'] }}"> {{type['type_name']}}</option>
             {% endif %}
         {% endfor %}   
       </select>
