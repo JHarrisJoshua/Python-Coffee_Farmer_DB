@@ -15,6 +15,7 @@ def varieties():
     query = "SELECT plant_id, plant_name, rust_resist, nematode_resist, optimal_altitude, optimal_rainfall, optimal_temp, Organizations.name, Types.name FROM Varieties LEFT JOIN Organizations ON Varieties.organization_id = Organizations.organization_id INNER JOIN Types ON Varieties.type_id = Types.type_id ORDER BY plant_id"
     cursor = db.execute_query(db_connection=db_connection, query=query)
     results = cursor.fetchall()
+    print(results)
     return render_template("varieties.j2", varieties=results)
 
 # Varieties CREATE
