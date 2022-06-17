@@ -100,11 +100,11 @@ def varieties_edit(plant_id):
             type_id = request.form["type_id"]
 
             if (org_id== "" or org_id =="0" or org_id == "None" or org_id == "NULL"):
-                query = "UPDATE Varieties SET Varieties.plant_name = %s, Varieties.rust_resist = %s, Varieties.nematode_resist = %s, Varieties.optimal_altitude = %s, Varieties.optimal_rainfall = %s, Varieties.optimal_temp = %s, Varieties.organization_id = NULL, Varieties.type_id = %s WHERE Varieties.plant_id = %s"
+                query = "UPDATE Varieties SET plant_name = %s, rust_resist = %s, nematode_resist = %s, optimal_altitude = %s, optimal_rainfall = %s, optimal_temp = %s, organization_id = NULL, type_id = %s WHERE plant_id = %s"
                 cursor = db.execute_query(db_connection=db_connection, query = query, query_params = (name, rust, nematode, opt_alt, opt_rain, opt_temp, type_id, plant_id))
 
             else:
-                query = "UPDATE Varieties SET Varieties.plant_name = %s, Varieties.rust_resist = %s, Varieties.nematode_resist = %s, Varieties.optimal_altitude = %s, Varieties.optimal_rainfall = %s, Varieties.optimal_temp = %s, Varieties.organization_id = %s, Varieties.type_id = %s WHERE Varieties.plant_id = %s"
+                query = "UPDATE Varieties SET plant_name = %s, rust_resist = %s, nematode_resist = %s, optimal_altitude = %s, optimal_rainfall = %s, optimal_temp = %s, organization_id = %s, type_id = %s WHERE plant_id = %s"
                 cursor = db.execute_query(db_connection=db_connection, query = query, query_params = (name, rust, nematode, opt_alt, opt_rain, opt_temp, org_id, type_id, plant_id))
 
             # redirect to varieties page
