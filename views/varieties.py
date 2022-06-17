@@ -21,7 +21,6 @@ def varieties():
 @varieties_view.route('/add', methods=["POST", "GET"])
 def varieties_add():
     db_connection = db.connect_to_database()
-    #print(request.method, request.form.get("add_variety"), request)
 
     # Retrieve info for dropdowns
     if request.method =="GET":
@@ -86,7 +85,6 @@ def varieties_edit(plant_id):
         cursor = db.execute_query(db_connection=db_connection, query=query3)
         results3 = cursor.fetchall()
 
-        print(result, result[0])
         return render_template("varieties_edit.j2", data = result, organizations = results2, types = results3)
 
     # Update Variety

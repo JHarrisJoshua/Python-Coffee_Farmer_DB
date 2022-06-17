@@ -21,7 +21,6 @@ def regions():
 @regions_view.route('/add', methods=["POST", "GET"])
 def regions_add():
     db_connection = db.connect_to_database()
-    #print(request.method, request.form.get("add_variety"), request)
 
     # Retrieve info for dropdowns
     if request.method =="GET":

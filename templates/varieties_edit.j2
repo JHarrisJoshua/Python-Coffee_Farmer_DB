@@ -14,7 +14,7 @@
       <label> Name </label> <input class="form-control" type="text" name="name" id="name" value="{{data[0].plant_name}}" required>
 
       </label>Rust Resistance</label> <select class="form-select" name="rust_resist" id="rust_resist">
-            {% for value in ['low','med', 'high'] %}
+            {% for value in ['Low','Medium', 'High'] %}
                 {% if value == data[0].rust_resist %}
                     <option value="{{value}}" selected>{{value}}</option>
                 {% else %}
@@ -24,7 +24,7 @@
       </select>
 
       </label>Nematode Resistance</label> <select class="form-select" name="nematode_resist" id="nematode_resist">
-            {% for value in ['low','med', 'high'] %}
+            {% for value in ['Low','Medium', 'High'] %}
                 {% if value == data[0].nematode_resist %}
                     <option value="{{value}}" selected>{{value}}</option>
                 {% else %}
@@ -34,7 +34,7 @@
       </select>
 
       </label>Optimal Altitude</label> <select class="form-select" name="altitude" id="altitude">
-            {% for value in ['low','med', 'high'] %}
+            {% for value in ['Low','Medium', 'High'] %}
                 {% if value == data[0].optimal_altitude %}
                     <option value="{{value}}" selected>{{value}}</option>
                 {% else %}
@@ -44,7 +44,7 @@
       </select>
 
       </label>Optimal Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
-            {% for value in ['low','med', 'high'] %}
+            {% for value in ['Low','Medium', 'High'] %}
                 {% if value == data[0].optimal_rainfall %}
                     <option value="{{value}}" selected>{{value}}</option>
                 {% else %}
@@ -54,7 +54,7 @@
       </select>
 
       </label>Optimal Temperature</label> <select class="form-select" name="temperature" id="temperature">
-            {% for value in ['low','med', 'high'] %}
+            {% for value in ['Low','Medium', 'High'] %}
                 {% if value == data[0].optimal_temp %}
                     <option value="{{value}}" selected>{{value}}</option>
                 {% else %}
