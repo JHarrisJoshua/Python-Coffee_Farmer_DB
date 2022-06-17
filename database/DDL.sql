@@ -6,6 +6,10 @@
 begin;
 set transaction read write;
 
+DROP TABLE IF EXISTS Regions_varieties, varieties, regions, types, organizations, countries;
+
+DROP TYPE IF EXISTS soil, ranges, orgs;
+
 CREATE TABLE Countries (
   country_id SERIAL PRIMARY KEY,
   country varchar(255) NOT NULL,
@@ -31,13 +35,13 @@ CREATE TABLE Regions (
 
 CREATE TABLE Organizations (
   organization_id SERIAL PRIMARY KEY,
-  name varchar(255) NOT NULL,
-  type orgs NOT NULL
+  org_name varchar(255) NOT NULL,
+  org_type orgs NOT NULL
 );
 
 CREATE TABLE Types (
   type_id SERIAL PRIMARY KEY,
-  name varchar(255) NOT NULL,
+  type_name varchar(255) NOT NULL,
   description varchar(255) NOT NULL
 );
 
@@ -70,7 +74,7 @@ VALUES('Brazil', 56300000, 3810000, 2480000),
 ('Colombia', 12900000, 2540000, 860000),
 ('Indonesia',10630000, 842540 , 1200000);
 
-INSERT into Types (name, description)
+INSERT into Types (type_name, description)
 VALUES ('Arabica', 'Considered the first type of coffee cultivated, this species makes up a majority of global production'),
 ('Robusta', 'Robusta is known to have a higher yield and be less susceptible than Arabica'),
 ('Excelsa', 'Resistant to many common diseases and pests. Unlike other types, it grows taller and resembles a tree more than a shrub'),
@@ -98,7 +102,7 @@ VALUES ('Minas Gerais', 'Low', 'Red-yellow Latosol', 'Medium', 'Medium', 1),
 ('Flores', 'Low', 'Red Latosol', 'Low', 'High', 4),
 ('Bali', 'Low', 'Red Latosol', 'Low', 'High', 4);
 
-INSERT into Organizations(name, type)
+INSERT into Organizations(org_name, org_type)
 VALUES('International Union for the Protection of New Varieties of Plants', 'Rights Holder' ),
 ('Central Highlands Agroforestry', 'Breeder'),
 ('Indonesian Coffee and Cocoa Research Institute', 'Breeder'),

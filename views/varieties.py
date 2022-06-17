@@ -12,7 +12,7 @@ varieties_view = Blueprint('varieties_view', __name__)
 @varieties_view.route('/', methods=["POST", "GET"])
 def varieties():
     db_connection = db.connect_to_database()
-    query = "SELECT plant_id, plant_name, rust_resist, nematode_resist, optimal_altitude, optimal_rainfall, optimal_temp, Organizations.name, Types.name FROM Varieties LEFT JOIN Organizations ON Varieties.organization_id = Organizations.organization_id INNER JOIN Types ON Varieties.type_id = Types.type_id ORDER BY plant_id"
+    query = "SELECT plant_id, plant_name, rust_resist, nematode_resist, optimal_altitude, optimal_rainfall, optimal_temp, Organizations.org_name, Types.type_name FROM Varieties LEFT JOIN Organizations ON Varieties.organization_id = Organizations.organization_id INNER JOIN Types ON Varieties.type_id = Types.type_id ORDER BY plant_id"
     cursor = db.execute_query(db_connection=db_connection, query=query)
     results = cursor.fetchall()
     print(results)
@@ -25,11 +25,11 @@ def varieties_add():
 
     # Retrieve info for dropdowns
     if request.method =="GET":
-        query = "SELECT organization_id, name FROM Organizations;"
+        query = "SELECT organization_id, org_name FROM Organizations;"
         cursor = db.execute_query(db_connection=db_connection, query=query)
         results1 = cursor.fetchall()
 
-        query2 = "SELECT type_id, name FROM Types;"
+        query2 = "SELECT type_id, type_name FROM Types;"
         cursor = db.execute_query(db_connection=db_connection, query=query2)
         results2 = cursor.fetchall()
 
