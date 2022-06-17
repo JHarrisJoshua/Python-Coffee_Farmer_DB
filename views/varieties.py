@@ -74,15 +74,15 @@ def varieties_edit(plant_id):
     
     # Retrieve info update/dropdowns
     if request.method == "GET":
-        query = "SELECT plant_id, plant_name, rust_resist, nematode_resist, optimal_altitude, optimal_rainfall, optimal_temp, Organizations.name, Types.name FROM Varieties LEFT JOIN Organizations ON Varieties.organization_id = Organizations.organization_id INNER JOIN Types ON Varieties.type_id = Types.type_id WHERE plant_id = %s" % (plant_id)
+        query = "SELECT plant_id, plant_name, rust_resist, nematode_resist, optimal_altitude, optimal_rainfall, optimal_temp, Organizations.org_name, Types.type_name FROM Varieties LEFT JOIN Organizations ON Varieties.organization_id = Organizations.organization_id INNER JOIN Types ON Varieties.type_id = Types.type_id WHERE plant_id = %s" % (plant_id)
         cursor = db.execute_query(db_connection=db_connection, query=query)
         result = cursor.fetchall()
 
-        query2 = "SELECT organization_id, name FROM Organizations;"
+        query2 = "SELECT organization_id, org_name FROM Organizations;"
         cursor = db.execute_query(db_connection=db_connection, query=query2)
         results2 = cursor.fetchall()
 
-        query3 = "SELECT type_id, name FROM Types;"
+        query3 = "SELECT type_id, type_name FROM Types;"
         cursor = db.execute_query(db_connection=db_connection, query=query3)
         results3 = cursor.fetchall()
 
