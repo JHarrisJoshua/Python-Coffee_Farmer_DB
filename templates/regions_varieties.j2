@@ -9,7 +9,8 @@
   <p>&nbsp;</p>
 
   <div id="search" style="display: block">
-    <form class="navbar" id="searchregion" action="/regions-varieties/" method="post">
+    <nav class="navbar">
+    <form id="searchregion" action="/regions-varieties/" method="post">
       <fieldset class="fields">
         <input type="submit" value="View Suitable Varieties by Region" name="region_variety_search" class="btn btn-success">
         <select class="form-select" name="region_id" id="region_id">
@@ -19,8 +20,7 @@
           {% endfor %}
         </select>
       </fieldset>
-
-    </form>
+    </form></nav>
   </div>
 
   <div id="browse" style="display: block">
