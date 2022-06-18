@@ -7,16 +7,16 @@
     <h2><strong>Browse Regions and Varieties</strong></h2>
   </nav>
 
-  <div id="search" style="display: block">
+  <div class="input-group mb-3" style="display: block">
     <form id="searchregion" action="/regions-varieties/" method="post">
       <fieldset class="fields">
-        <p><input type="submit" value="View Suitable Varieties by Region" name="region_variety_search" class="btn btn-success"></p>
-        <p><select class="form-select" name="region_id" id="region_id">
+        <input type="submit" value="View Suitable Varieties by Region" name="region_variety_search" class="btn btn-success">
+        <select class="form-select" name="region_id" id="region_id">
           <option value="0" selected>All Regions</option>
           {% for region in regions %}
           <option value="{{ region['region_id'] }}"> {{ region['region'] }}</option>
           {% endfor %}
-        </select></p>
+        </select>
       </fieldset>
     </form>
   </div>
