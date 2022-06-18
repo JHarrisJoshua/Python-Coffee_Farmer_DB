@@ -1,20 +1,21 @@
 {% extends "layout.j2" %}
 
 {% block main %}
-  <div id="add" style="display: block">
-    <h2><strong>Add Type</strong></h2>
-    <p>&nbsp;</p>
-  </div>
+<div id="add" style="display: block">
+  <h2><strong>Add Type</strong></h2>
+  <p>&nbsp;</p>
+</div>
 
-  <div id="insert" style="display: block">
+<div id="insert" style="display: block">
   <form id="insertType" action="/types/add" method="post">
     <fieldset class="fields">
       <label> Name </label> <input type="text" class="form-control" id="name" name="name" required> <br>
       <label> Description </label> <input type="text" class="form-control" id="desc" name="desc" required>
-    </fieldset><p>&nbsp;</p>
+    </fieldset>
+    <p>&nbsp;</p>
     <input type="submit" value="Add Type" name="add_type" class="btn btn-primary">
     <a href='/types'><input class="btn btn-primary" type="button" value="Cancel"></a>
   </form>
-  </div>
+</div>
 
 {% endblock %}

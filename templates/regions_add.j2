@@ -1,56 +1,56 @@
 {% extends "layout.j2" %}
 
 {% block main %}
-  <div id="add" style="display: block">
-    <h2><strong>Add Region</strong></h2>
+<div id="add" style="display: block">
+  <h2><strong>Add Region</strong></h2>
+  <p>&nbsp;</p>
+</div>
+
+<div id="insert" style="display: block">
+  <form id="insertRegion" action="/regions/add" method="post">
+    <fieldset class="fields">
+      <label> Region </label> <input type="text" class="form-control" id="name" name="name" required>
+
+      <label> Soil Type </label> <select class="form-select" name="soil" id="soil">
+        <option value="Andosol" selected>Andosol</option>
+        <option value="Red Latosol">Red Latosol</option>
+        <option value="Red-yellow Latosol">Red-yellow Latosol</option>
+      </select>
+
+      <label>Altitude</label> <select class="form-select" name="altitude" id="altitude">
+        <option value="Low">Low</option>
+        <option value="Medium" selected="selected">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label>Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
+        <option value="Low">Low</option>
+        <option value="Medium" selected="selected">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label>Temperature</label> <select class="form-select" name="temperature" id="temperature">
+        <option value="Low">Low</option>
+        <option value="Medium" selected="selected">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label>Country</label> <select class="form-select" name="country_id" id="country_id">
+        {% for country in countries %}
+        {% if country['country_id'] == 1 %}
+        <option value="{{ country['country_id'] }}" selected> {{country['country']}}</option>
+        {% else %}
+        <option value="{{ country['country_id'] }}"> {{country['country']}}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+
+    </fieldset>
     <p>&nbsp;</p>
-  </div>
-
-  <div id="insert" style="display: block">
-    <form id="insertRegion" action="/regions/add" method="post">
-      <fieldset class="fields">
-        <label> Region </label> <input type="text" class="form-control" id="name" name="name" required>
-
-        <label> Soil Type </label> <select class="form-select" name="soil" id = "soil">
-          <option value="Andosol" selected>Andosol</option>
-          <option value="Red Latosol">Red Latosol</option>
-          <option value="Red-yellow Latosol">Red-yellow Latosol</option>
-        </select>
-
-        <label>Altitude</label> <select class="form-select" name="altitude" id="altitude">
-          <option value="Low">Low</option>
-          <option value="Medium" selected="selected">Medium</option>
-          <option value="High">High</option>
-        </select>
-
-        <label>Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
-        <option value="Low">Low</option>
-        <option value="Medium" selected="selected">Medium</option>
-        <option value="High">High</option>
-        </select>
-
-        <label>Temperature</label> <select class="form-select" name="temperature" id="temperature">
-        <option value="Low">Low</option>
-        <option value="Medium" selected="selected">Medium</option>
-        <option value="High">High</option>
-        </select>
-
-        <label>Country</label> <select class="form-select" name="country_id" id="country_id">
-            {% for country in countries %}
-                {% if country['country_id'] == 1 %}
-                    <option value="{{ country['country_id'] }}" selected> {{country['country']}}</option>
-                {% else %}
-                    <option value="{{ country['country_id'] }}"> {{country['country']}}</option> 
-                {% endif %}
-            {% endfor %}
-        </select>
-
-      </fieldset><p>&nbsp;</p>
-      <input class="btn btn-primary" type="submit" name="add_region" id="add_region" value="Add Region">
-      <a href='/regions'><input class="btn btn-primary" type="button" value="Cancel"></a>
-    </form>
-    <!--add new region-->
-  </div>
+    <input class="btn btn-primary" type="submit" name="add_region" id="add_region" value="Add Region">
+    <a href='/regions'><input class="btn btn-primary" type="button" value="Cancel"></a>
+  </form>
+  <!--add new region-->
+</div>
 
 {% endblock %}
-

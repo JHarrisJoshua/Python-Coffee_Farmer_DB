@@ -1,13 +1,13 @@
 {% extends "layout.j2" %}
 
 {% block main %}
-  <div id="browse" style="display: block">
-    <nav class="navbar">
+<div id="browse" style="display: block">
+  <nav class="navbar">
     <h2><strong>Browse Regions</strong></h2>
     <a href="/regions/add" class="btn btn-success">Add Region</a>
-    </nav>
+  </nav>
 
-    <table class="table table-striped">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
@@ -21,7 +21,7 @@
         <th></th>
       </tr>
 
-      <tbody>
+    <tbody>
       {% for region in regions %}
       <tr>
         {% for key in region.keys() %}
@@ -29,13 +29,13 @@
         {% endfor %}
         <td><a href="/regions/edit/{{region.region_id}}" class="btn btn-outline-success">Edit</a></td>
         <td>
-        <a href="/regions/delete/{{region.region_id}}" class="btn btn-outline-success" onClick="return confirm('Are you sure you want to delete?' );">Delete</a>
+          <a href="/regions/delete/{{region.region_id}}" class="btn btn-outline-success"
+            onClick="return confirm('Are you sure you want to delete?' );">Delete</a>
         </td>
       </tr>
       {% endfor %}
-      </table>
-    <p>&nbsp;</p>
-  </div> <!-- browse -->
+  </table>
+  <p>&nbsp;</p>
+</div> <!-- browse -->
 
 {% endblock %}
-

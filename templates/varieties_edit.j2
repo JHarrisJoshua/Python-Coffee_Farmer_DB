@@ -1,97 +1,100 @@
 {% extends "layout.j2" %}
 
 {% block main %}
-  <div id="edit" style="display: block">
+<div id="edit" style="display: block">
     <h2><strong>Edit Variety</strong></h2>
     <p>&nbsp;</p>
-  </div>
+</div>
 
-  <div id="update" style="display: block"></div>
-  <form id="updateVariety" action="/varieties/edit/{{data[0].plant_id}}" method="post">
+<div id="update" style="display: block"></div>
+<form id="updateVariety" action="/varieties/edit/{{data[0].plant_id}}" method="post">
     <fieldset class="fields">
-    
-      <label> <strong>ID: {{data[0].plant_id}}</strong></label> <br>
-      <label> Name </label> <input class="form-control" type="text" name="name" id="name" value="{{data[0].plant_name}}" required>
 
-      </label>Rust Resistance</label> <select class="form-select" name="rust_resist" id="rust_resist">
+        <label> <strong>ID: {{data[0].plant_id}}</strong></label> <br>
+        <label> Name </label> <input class="form-control" type="text" name="name" id="name"
+            value="{{data[0].plant_name}}" required>
+
+        </label>Rust Resistance</label> <select class="form-select" name="rust_resist" id="rust_resist">
             {% for value in ['Low','Medium', 'High'] %}
-                {% if value == data[0].rust_resist %}
-                    <option value="{{value}}" selected>{{value}}</option>
-                {% else %}
-                    <option value="{{value}}"> {{value}}</option> 
-                {% endif %}
+            {% if value == data[0].rust_resist %}
+            <option value="{{value}}" selected>{{value}}</option>
+            {% else %}
+            <option value="{{value}}"> {{value}}</option>
+            {% endif %}
             {% endfor %}
-      </select>
+        </select>
 
-      </label>Nematode Resistance</label> <select class="form-select" name="nematode_resist" id="nematode_resist">
+        </label>Nematode Resistance</label> <select class="form-select" name="nematode_resist" id="nematode_resist">
             {% for value in ['Low','Medium', 'High'] %}
-                {% if value == data[0].nematode_resist %}
-                    <option value="{{value}}" selected>{{value}}</option>
-                {% else %}
-                    <option value="{{value}}"> {{value}}</option> 
-                {% endif %}
+            {% if value == data[0].nematode_resist %}
+            <option value="{{value}}" selected>{{value}}</option>
+            {% else %}
+            <option value="{{value}}"> {{value}}</option>
+            {% endif %}
             {% endfor %}
-      </select>
+        </select>
 
-      </label>Optimal Altitude</label> <select class="form-select" name="altitude" id="altitude">
+        </label>Optimal Altitude</label> <select class="form-select" name="altitude" id="altitude">
             {% for value in ['Low','Medium', 'High'] %}
-                {% if value == data[0].optimal_altitude %}
-                    <option value="{{value}}" selected>{{value}}</option>
-                {% else %}
-                    <option value="{{value}}"> {{value}}</option> 
-                {% endif %}
+            {% if value == data[0].optimal_altitude %}
+            <option value="{{value}}" selected>{{value}}</option>
+            {% else %}
+            <option value="{{value}}"> {{value}}</option>
+            {% endif %}
             {% endfor %}
-      </select>
+        </select>
 
-      </label>Optimal Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
+        </label>Optimal Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
             {% for value in ['Low','Medium', 'High'] %}
-                {% if value == data[0].optimal_rainfall %}
-                    <option value="{{value}}" selected>{{value}}</option>
-                {% else %}
-                    <option value="{{value}}"> {{value}}</option> 
-                {% endif %}
+            {% if value == data[0].optimal_rainfall %}
+            <option value="{{value}}" selected>{{value}}</option>
+            {% else %}
+            <option value="{{value}}"> {{value}}</option>
+            {% endif %}
             {% endfor %}
-      </select>
+        </select>
 
-      </label>Optimal Temperature</label> <select class="form-select" name="temperature" id="temperature">
+        </label>Optimal Temperature</label> <select class="form-select" name="temperature" id="temperature">
             {% for value in ['Low','Medium', 'High'] %}
-                {% if value == data[0].optimal_temp %}
-                    <option value="{{value}}" selected>{{value}}</option>
-                {% else %}
-                    <option value="{{value}}"> {{value}}</option> 
-                {% endif %}
+            {% if value == data[0].optimal_temp %}
+            <option value="{{value}}" selected>{{value}}</option>
+            {% else %}
+            <option value="{{value}}"> {{value}}</option>
+            {% endif %}
             {% endfor %}
-      </select> 
+        </select>
 
-      <label> Organization/Breeder </label> <select class="form-select" class="form-control" name="organization_id" id="organization_id">
-        {% if data[0].name is none %}        
+        <label> Organization/Breeder </label> <select class="form-select" class="form-control" name="organization_id"
+            id="organization_id">
+            {% if data[0].name is none %}
             <option value="0" selected>None</option>
-        {% else %}
+            {% else %}
             <option value="0">None</option>
-        {% endif %}
-        {% for org in organizations %}
+            {% endif %}
+            {% for org in organizations %}
             {% if data[0].org_name == org.org_name %}
-                <option value="{{ org['organization_id'] }}" selected> {{org['org_name']}}</option>
+            <option value="{{ org['organization_id'] }}" selected> {{org['org_name']}}</option>
             {% else %}
-                <option value="{{ org['organization_id'] }}"> {{org['org_name']}}</option>
+            <option value="{{ org['organization_id'] }}"> {{org['org_name']}}</option>
             {% endif %}
-        {% endfor %} 
-      </select> 
+            {% endfor %}
+        </select>
 
-      </label>Type</label> <select class="form-select" name="type_id" id="type_id">
-        {% for type in types %}
+        </label>Type</label> <select class="form-select" name="type_id" id="type_id">
+            {% for type in types %}
             {% if type['type_name'] == data[0]['type_name'] %}
-                <option value="{{ type['type_id'] }}" selected> {{type['type_name']}}</option>
+            <option value="{{ type['type_id'] }}" selected> {{type['type_name']}}</option>
             {% else %}
-                <option value="{{ type['type_id'] }}"> {{type['type_name']}}</option>
+            <option value="{{ type['type_id'] }}"> {{type['type_name']}}</option>
             {% endif %}
-        {% endfor %}   
-      </select>
-      
-    </fieldset><p>&nbsp;</p>
+            {% endfor %}
+        </select>
+
+    </fieldset>
+    <p>&nbsp;</p>
     <input type="submit" value="Submit" name="edit_variety" class="btn btn-primary">
     <a href='/varieties'><input class="btn btn-primary" type="button" value="Cancel"></a>
-  </form>
-  </div>
+</form>
+</div>
 
 {% endblock %}

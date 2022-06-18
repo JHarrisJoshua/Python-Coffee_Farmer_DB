@@ -2,24 +2,26 @@
 
 {% block main %}
 
-  <div id="browse" style="display: block">
-    <nav class="navbar">
+<div id="browse" style="display: block">
+  <nav class="navbar">
     <h2><strong>Browse Regions and Varieties</strong></h2>
-    </nav><p>&nbsp;</p>
+  </nav>
+  <p>&nbsp;</p>
 
   <div id="search" style="display: block">
     <form id="searchregion" action="/regions-varieties/" method="post">
-    <fieldset class="fields">
-      <label> View Suitable Varieties by Region </label> 
-      <select class="form-select" name="region_id" id="region_id">
-        <option value="0" selected>All Regions</option>
-        {% for region in regions %}
-            <option value="{{ region['region_id'] }}"> {{ region['region'] }}</option> 
-        {% endfor %}
-      </select>
+      <fieldset class="fields">
+        <label> View Suitable Varieties by Region </label>
+        <select class="form-select" name="region_id" id="region_id">
+          <option value="0" selected>All Regions</option>
+          {% for region in regions %}
+          <option value="{{ region['region_id'] }}"> {{ region['region'] }}</option>
+          {% endfor %}
+        </select>
       </fieldset>
-      <input type="submit" value="View Suitable Varieties" name="region_variety_search" class="btn btn-success"> <p>&nbsp;</p>
-  </form>
+      <input type="submit" value="View Suitable Varieties" name="region_variety_search" class="btn btn-success">
+      <p>&nbsp;</p>
+    </form>
   </div>
 
   <div id="browse" style="display: block">
@@ -36,15 +38,15 @@
       </tr>
 
       <tbody>
-      {% for region_variety in regions_varieties %}
-      <tr>
-        {% for key in region_variety.keys() %}
-        <td>{{ region_variety[key] }}</td>
+        {% for region_variety in regions_varieties %}
+        <tr>
+          {% for key in region_variety.keys() %}
+          <td>{{ region_variety[key] }}</td>
+          {% endfor %}
+        </tr>
         {% endfor %}
-      </tr>
-      {% endfor %}
-      </table>
+    </table>
     <p>&nbsp;</p>
   </div>
 
-{% endblock %}
+  {% endblock %}

@@ -1,12 +1,12 @@
 {% extends "layout.j2" %}
 
 {% block main %}
-  <div id="add" style="display: block">
-    <h2><strong>Add Variety</strong></h2>
-    <p>&nbsp;</p>
-  </div>
+<div id="add" style="display: block">
+  <h2><strong>Add Variety</strong></h2>
+  <p>&nbsp;</p>
+</div>
 
-  <div id="insert" style="display: block">
+<div id="insert" style="display: block">
   <form id="insertVariety" action="/varieties/add" method="post">
     <fieldset class="fields">
       <label> Name </label> <input type="text" class="form-control" id="name" name="name" required>
@@ -44,23 +44,24 @@
       <label> Organization/Breeder </label> <select class="form-select" name="organization_id" id="organization_id">
         <option value="0" selected>None</option>
         {% for org in organizations %}
-            <option value="{{ org['organization_id'] }}"> {{org['org_name']}}</option>
+        <option value="{{ org['organization_id'] }}"> {{org['org_name']}}</option>
         {% endfor %}
       </select>
 
       <label>Type</label> <select class="form-select" name="type_id" id="type_id">
         {% for type in types %}
-            {% if type['type_id'] == 1 %}
-                <option value="{{ type['type_id'] }}" selected> {{type['type_name']}}</option>
-            {% else %}
-                <option value="{{ type['type_id'] }}"> {{type['type_name']}}</option>
-            {% endif %}
+        {% if type['type_id'] == 1 %}
+        <option value="{{ type['type_id'] }}" selected> {{type['type_name']}}</option>
+        {% else %}
+        <option value="{{ type['type_id'] }}"> {{type['type_name']}}</option>
+        {% endif %}
         {% endfor %}
       </select>
-    </fieldset><p>&nbsp;</p>
+    </fieldset>
+    <p>&nbsp;</p>
     <input type="submit" value="Add Variety" name="add_variety" class="btn btn-primary">
     <a href='/varieties'><input class="btn btn-primary" type="button" value="Cancel"></a>
   </form>
-  </div>
+</div>
 
 {% endblock %}

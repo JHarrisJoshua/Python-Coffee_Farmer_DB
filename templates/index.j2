@@ -1,48 +1,47 @@
 {% extends "layout.j2" %}
 
 {% block main %}
-    <h2>Coffee Farmer's Almanac</h2>
-    <h5>
-        <p>A database to track the cultivation of different varieties of coffee plants around the world.</p>
-    </h5>
+<h2>Coffee Farmer's Almanac</h2>
+<h5>
+    <p>A database to track the cultivation of different varieties of coffee plants around the world.</p>
+</h5>
 
-    <div id="browse" style="display: block">
-        <p>Which data would you like to view?</p>
-        <p><a href="/varieties" class="btn btn-success">Varieties</a></p>
-        <ul>
-            <li>Display genetic varieties of coffee plants</li>
-            <li>Add genetic varieties of coffee plants</li>
-            <li>Update the data for a genetic variety of coffee</li>
-            <li>Remove a genetic variety of coffee</li>
-        </ul>
-        <p><a href="/regions" class="btn btn-success">Regions</a></p>
-        <ul>
-            <li>Display coffee growing regions</li>
-            <li>Add a coffee growing region</li>
-            <li>Remove a coffee growing region</li>
-        </ul>
-        <p><a href="/regions-varieties" class="btn btn-success">Regions & Varieties</a></p>
-        <ul>
-            <li>Display suitable varieties of coffee by region</li>
-            <li>Search for suitable varieties of coffee by region</li>
-        </ul>
-        <p><a href="/types" class="btn btn-success">Types</a></p>
-        <ul>
-            <li>Display main types of coffee plants</li>
-            <li>Add a type of coffee plant</li>
-        </ul>
-        <p><a href="/countries" class="btn btn-success">Countries</a></p>
-        <ul>
-            <li>Display a country</li>
-            <li>Add a country</li>
-        </ul>
-        <p><a href="/organizations" class="btn btn-success">Organizations</a></p>
-        <ul>
-            <li>Display organizations</li>
-            <li>Add an organization</li>
-        </ul>
+<div id="browse" style="display: block">
+    <p>Which data would you like to view?</p>
+    <p><a href="/varieties" class="btn btn-success">Varieties</a></p>
+    <ul>
+        <li>Display genetic varieties of coffee plants</li>
+        <li>Add genetic varieties of coffee plants</li>
+        <li>Update the data for a genetic variety of coffee</li>
+        <li>Remove a genetic variety of coffee</li>
+    </ul>
+    <p><a href="/regions" class="btn btn-success">Regions</a></p>
+    <ul>
+        <li>Display coffee growing regions</li>
+        <li>Add a coffee growing region</li>
+        <li>Remove a coffee growing region</li>
+    </ul>
+    <p><a href="/regions-varieties" class="btn btn-success">Regions & Varieties</a></p>
+    <ul>
+        <li>Display suitable varieties of coffee by region</li>
+        <li>Search for suitable varieties of coffee by region</li>
+    </ul>
+    <p><a href="/types" class="btn btn-success">Types</a></p>
+    <ul>
+        <li>Display main types of coffee plants</li>
+        <li>Add a type of coffee plant</li>
+    </ul>
+    <p><a href="/countries" class="btn btn-success">Countries</a></p>
+    <ul>
+        <li>Display a country</li>
+        <li>Add a country</li>
+    </ul>
+    <p><a href="/organizations" class="btn btn-success">Organizations</a></p>
+    <ul>
+        <li>Display organizations</li>
+        <li>Add an organization</li>
+    </ul>
 
-    </div>
+</div>
 
 {% endblock %}
-
