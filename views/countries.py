@@ -9,6 +9,7 @@ import database.db_connector as db
 db_connection = db.connect_to_database()
 countries_view = Blueprint('countries_view', __name__)
 
+
 # Countries READ
 @countries_view.route('/')
 def countries():
@@ -19,25 +20,26 @@ def countries():
     print(results)  
     return render_template("countries.j2", countries=results)
 
+
 # Countries CREATE
 @countries_view.route('/add', methods=["POST", "GET"])
 def countries_add():
     db_connection = db.connect_to_database()
     
     # Render Add Form
-    if request.method =="GET":
+    if request.method == "GET":
         return render_template("countries_add.j2")
 
     # Add a country
     if request.method == "POST":
         if request.form.get("add_country"):
             country = request.form["country"]
-            exportqty = request.form["exportqty"]
-            exportusd = request.form["exportusd"]
+            export_qty = request.form["exportqty"]
+            export_usd = request.form["exportusd"]
             area = request.form["area"]
 
             query = "INSERT INTO Countries (country, export_quantity, export_usd, cultivated_area) VALUES (%s, %s, %s, %s)"
-            cursor = db.execute_query(db_connection=db_connection, query = query, query_params = (country, exportqty, exportusd, area))
+            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(country, export_qty, export_usd, area))
                         
             # redirect to countries page
             return redirect("/countries")

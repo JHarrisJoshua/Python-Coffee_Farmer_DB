@@ -1,0 +1,72 @@
+{% extends "layout.j2" %}
+
+{% block main %}
+  <div id="edit" style="display: block">
+    <h2><strong>Edit Region</strong></h2>
+    <p>&nbsp;</p>
+  </div>
+
+  <div id="update" style="display: block"></div>
+  <form id="updateRegions" action="/regions/edit/{{data[0].region_id}}" method="post">
+    <fieldset class="fields">
+
+        <label> <strong>ID: {{data[0].region_id}}</strong></label> <br>
+        <label> Region </label> <input class="form-control" type="text" name="region" id="region" value="{{data[0].region}}" required>
+
+        </label>Soil Type</label> <select class="form-select" name="soil" id="soil">
+            {% for value in ['Andosol','Red Latosol', 'Red-yellow Latosol'] %}
+                {% if value == data[0].soil_type %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        </label>Altitude</label> <select class="form-select" name="altitude" id="altitude">
+            {% for value in ['Low','Medium', 'High'] %}
+                {% if value == data[0].altitude %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        </label>Rainfall</label> <select class="form-select" name="rainfall" id="rainfall">
+            {% for value in ['Low','Medium', 'High'] %}
+                {% if value == data[0].rainfall %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        </label>Temperature</label> <select class="form-select" name="temp" id="temp">
+            {% for value in ['Low','Medium', 'High'] %}
+                {% if value == data[0].temp %}
+                    <option value="{{value}}" selected>{{value}}</option>
+                {% else %}
+                    <option value="{{value}}"> {{value}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        </label>Country</label> <select class="form-select" name="country_id" id="country_id">
+            {% for country in countries %}
+                {% if country['country'] == data[0]['country'] %}
+                    <option value="{{ country['country_id'] }}" selected> {{country['country']}}</option>
+                {% else %}
+                    <option value="{{ country['country_id'] }}"> {{country['country']}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+    </fieldset><p>&nbsp;</p>
+    <input type="submit" value="Submit" name="edit_region" class="btn btn-primary">
+    <a href='/regions'><input class="btn btn-primary" type="button" value="Cancel"></a>
+  </form>
+  </div>
+
+{% endblock %}

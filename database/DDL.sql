@@ -6,7 +6,7 @@
 begin;
 set transaction read write;
 
-DROP TABLE IF EXISTS Regions_varieties, varieties, regions, types, organizations, countries;
+DROP TABLE IF EXISTS varieties, regions, types, organizations, countries;
 
 DROP TYPE IF EXISTS soil, ranges, orgs;
 
@@ -25,8 +25,8 @@ CREATE TYPE orgs AS ENUM('Breeder','Rights Holder');
 CREATE TABLE Regions (
   region_id SERIAL PRIMARY KEY,
   region varchar(255) NOT NULL,
-  altitude ranges NOT NULL DEFAULT 'Medium',
   soil_type soil NOT NULL DEFAULT 'Andosol',
+  altitude ranges NOT NULL DEFAULT 'Medium',
   rainfall ranges NOT NULL DEFAULT 'Medium',
   temp ranges NOT NULL DEFAULT 'Medium',
   country_id int NOT NULL,
@@ -60,14 +60,6 @@ CREATE TABLE Varieties (
   ON DELETE SET NULL
 );
 
-CREATE TABLE Regions_Varieties (
-  region_plant_id SERIAL PRIMARY KEY,
-  region_id int NOT NULL,
-  plant_id int NOT NULL,
-   FOREIGN KEY(region_id) REFERENCES Regions(region_id) ON DELETE CASCADE,
-   FOREIGN KEY(plant_id) REFERENCES Varieties(plant_id) ON DELETE CASCADE
-);
-
 INSERT into Countries (country, export_quantity, export_usd, cultivated_area)
 VALUES('Brazil', 56300000, 3810000, 2480000),
 ('Vietnam',30500000, 2240000 ,605000),
@@ -80,27 +72,27 @@ VALUES ('Arabica', 'Considered the first type of coffee cultivated, this species
 ('Excelsa', 'Resistant to many common diseases and pests. Unlike other types, it grows taller and resembles a tree more than a shrub'),
 ('Liberica','Has lower caffeine content than other types, but commands a higher price due to limited supply');
 
-INSERT into Regions(region, altitude, soil_type, rainfall, temp, country_id)
-VALUES ('Minas Gerais', 'Low', 'Red-yellow Latosol', 'Medium', 'Medium', 1),
-('Cerrado', 'Medium', 'Red Latosol', 'Low', 'Medium', 1),
-('Mogiana', 'Medium', 'Red Latosol', 'Low', 'Medium', 1),
-('Bahia', 'Medium', 'Andosol', 'Low', 'High', 1),
-('Rondonia', 'Low', 'Red Latosol', 'Medium', 'Medium',1),
-('Da Lat', 'High', 'Red Latosol', 'Medium', 'Low', 2),
-('Dak Lak', 'Low', 'Red-yellow Latosol', 'Medium', 'High', 2),
-('Gia Lai', 'Low', 'Red-yellow Latosol', 'Medium', 'High', 2),
-('Dak Nong', 'Low', 'Andosol', 'Medium', 'High', 2),
-('Lam Dong', 'Low', 'Andosol', 'Low', 'High',  2),
-('Narino', 'High', 'Andosol', 'Low', 'High', 3),
-('Cauca', 'High', 'Andosol', 'Low', 'High', 3),
-('Meta', 'High', 'Andosol', 'Medium', 'Low',  3),
-('Huila', 'High', 'Andosol', 'Medium', 'Low', 3),
-('Tolima', 'High', 'Andosol', 'Medium', 'Low',  3),
-('Sumatra', 'Low', 'Andosol', 'High', 'High',  4),
-('Java', 'Low', 'Andosol', 'Medium', 'Medium', 4),
-('Sulawesi', 'Medium', 'Red Latosol', 'Low', 'High', 4 ),
-('Flores', 'Low', 'Red Latosol', 'Low', 'High', 4),
-('Bali', 'Low', 'Red Latosol', 'Low', 'High', 4);
+INSERT into Regions(region, soil_type, altitude, rainfall, temp, country_id)
+VALUES ('Minas Gerais', 'Red-yellow Latosol', 'Low', 'Medium', 'Medium', 1),
+('Cerrado', 'Red Latosol', 'Medium', 'Low', 'Medium', 1),
+('Mogiana', 'Red Latosol', 'Medium', 'Low', 'Medium', 1),
+('Bahia', 'Andosol', 'Medium', 'Low', 'High', 1),
+('Rondonia', 'Red Latosol', 'Low', 'Medium', 'Medium',1),
+('Da Lat', 'Red Latosol', 'High', 'Medium', 'Low', 2),
+('Dak Lak', 'Red-yellow Latosol', 'Low', 'Medium', 'High', 2),
+('Gia Lai', 'Red-yellow Latosol', 'Low', 'Medium', 'High', 2),
+('Dak Nong', 'Andosol', 'Low', 'Medium', 'High', 2),
+('Lam Dong', 'Andosol', 'Low', 'Low', 'High',  2),
+('Narino', 'Andosol', 'Medium', 'Low', 'High', 3),
+('Cauca', 'Andosol', 'Medium', 'Low', 'High', 3),
+('Meta', 'Andosol', 'High', 'Medium', 'Low',  3),
+('Huila', 'Andosol', 'High', 'Medium', 'Low', 3),
+('Tolima', 'Andosol', 'High', 'Medium', 'Low',  3),
+('Sumatra', 'Andosol', 'Low', 'High', 'High',  4),
+('Java', 'Andosol', 'Low', 'Medium', 'Medium', 4),
+('Sulawesi', 'Red Latosol', 'Medium', 'Low', 'High', 4),
+('Flores', 'Red Latosol', 'Low', 'Low', 'High', 4),
+('Bali', 'Red Latosol', 'Low', 'Low', 'High', 4);
 
 INSERT into Organizations(org_name, org_type)
 VALUES('International Union for the Protection of New Varieties of Plants', 'Rights Holder' ),
@@ -118,9 +110,5 @@ VALUES ('Bourbon-Typica', 'Low', 'Low', 'Low', 'Medium', 'Medium', NULL, 1),
 ('Luwak', 'Medium', 'High', 'Medium', 'Low', 'Medium', 3,4),
 ('Mooleh Manay', 'Medium', 'Medium', 'Low', 'Medium', 'High', 2,  3),
 ('Suntikoopa', 'High', 'High' , 'Low', 'Low', 'High', 1, 3);
-
-INSERT into Regions_Varieties(region_id, plant_id)
-VALUES (1, 1), (5, 1), (17, 1), (6, 2), (11, 2), (12, 2), (13, 2), (14, 2), (15, 2), (8, 3), (9, 3), (8, 4), (9, 4),
-(4, 5), (18, 5), (16, 6), (2, 7), (3, 7), (8, 8), (9, 8), (7, 9), (10, 9), (19, 9), (20, 9);
 
 commit;

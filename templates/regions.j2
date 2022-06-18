@@ -12,11 +12,12 @@
       <tr>
         <th>ID</th>
         <th>Region</th>
-        <th>Altitude</th>
         <th>Soil Type</th>
+        <th>Altitude</th>
         <th>Rainfall</th>
         <th>Temp</th>
         <th>Country</th>
+        <th></th>
         <th></th>
       </tr>
 
@@ -26,6 +27,7 @@
         {% for key in region.keys() %}
         <td>{{region[key]}}</td>
         {% endfor %}
+        <td><a href="/regions/edit/{{region.region_id}}" class="btn btn-outline-success">Edit</a></td>
         <td>
         <a href="/regions/delete/{{region.region_id}}" class="btn btn-outline-success" onClick="return confirm('Are you sure you want to delete?' );">Delete</a>
         </td>
