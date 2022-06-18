@@ -11,7 +11,7 @@
   <div id="search" style="display: block">
     <form id="searchregion" action="/regions-varieties/" method="post">
       <fieldset class="fields">
-        <label> View Suitable Varieties by Region </label>
+        <label class="fw-semibold"> View Suitable Varieties by Region </label>
         <select class="form-select" name="region_id" id="region_id">
           <option value="0" selected>All Regions</option>
           {% for region in regions %}
@@ -19,8 +19,9 @@
           {% endfor %}
         </select>
       </fieldset>
+      <p>
       <input type="submit" value="View Suitable Varieties" name="region_variety_search" class="btn btn-success">
-      <p>&nbsp;</p>
+      &nbsp;</p>
     </form>
   </div>
 
