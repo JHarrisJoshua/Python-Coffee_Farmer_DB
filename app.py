@@ -3,12 +3,12 @@ from flask_mysqldb import MySQL
 from flask import request
 
 # Import Table views for Flask Blueprints
-from views.varieties import varieties_view
-from views.regions import regions_view
-from views.regions_varieties import regions_varieties_view
-from views.types import types_view
-from views.countries import countries_view
-from views.organizations import organizations_view
+from blueprints.varieties import varieties_view
+from blueprints.regions import regions_view
+from blueprints.regions_varieties import regions_varieties_view
+from blueprints.types import types_view
+from blueprints.countries import countries_view
+from blueprints.organizations import organizations_view
 import os
 import database.db_connector as db
 

@@ -35,7 +35,7 @@ def execute_query(db_connection = None, query = None, query_params = ()):
         print("Query is empty")
         return None
 
-    print("Executing %s with %s" % (query, query_params))
+    # print("Executing %s with %s" % (query, query_params))
 
     # Create a cursor to execute query.
     cursor = db_connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)

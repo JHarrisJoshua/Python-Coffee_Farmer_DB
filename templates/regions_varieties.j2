@@ -7,39 +7,17 @@
     <h2><strong>Browse Regions and Varieties</strong></h2>
   </nav>
 
-    <div class="input-group mb-3">
-      <button class="btn btn-outline-secondary" type="button">Button</button>
-      <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-
-  <div class="input-group mb-3" style="display: block">
-        <button class="btn btn-success" type="button">View Suitable Varieties by Region</button>
-        <select class="form-select" name="region_id" id="region_id">
-          <option value="0" selected>All Regions</option>
-          {% for region in regions %}
-          <option value="{{ region['region_id'] }}"> {{ region['region'] }}</option>
-          {% endfor %}
-        </select>
-  </div>
-
-  <div class="input-group mb-3" style="display: block">
     <form id="searchregion" action="/regions-varieties/" method="post">
       <fieldset class="fields">
+      <div class="input-group mb-3">
         <input type="submit" value="View Suitable Varieties by Region" name="region_variety_search" class="btn btn-success">
         <select class="form-select" name="region_id" id="region_id">
           <option value="0" selected>All Regions</option>
           {% for region in regions %}
           <option value="{{ region['region_id'] }}"> {{ region['region'] }}</option>
           {% endfor %}
-        </select>
-      </fieldset>
-    </form>
-  </div>
+        </select></div>
+      </fieldset></form>
 
   <div id="browse" style="display: block">
     <table class="table table-striped">

@@ -21,14 +21,23 @@ def regions_varieties(region_id=None):
             region_id = request.form["region_id"]
 
     if (region_id is None) or (region_id == '0'):
-        query = "SELECT plant_name, rust_resist, nematode_resist, altitude, rainfall, temp, region FROM Regions JOIN Varieties ON Regions.altitude = Varieties.optimal_altitude AND Regions.rainfall = Varieties.optimal_rainfall AND Regions.temp = Varieties.optimal_temp ORDER BY plant_id, region_id"
+        query = "SELECT plant_name, rust_resist, nematode_resist, altitude, rainfall, temp, region FROM Regions " \
+                "JOIN Varieties ON Regions.altitude = Varieties.optimal_altitude " \
+                "AND Regions.rainfall = Varieties.optimal_rainfall AND Regions.temp = Varieties.optimal_temp " \
+                "ORDER BY plant_id, region_id"
     else:
-        query = "SELECT plant_name, rust_resist, nematode_resist, altitude, rainfall, temp, region FROM Regions JOIN Varieties ON Regions.altitude = Varieties.optimal_altitude AND Regions.rainfall = Varieties.optimal_rainfall AND Regions.temp = Varieties.optimal_temp WHERE Regions.region_id = %s ORDER BY plant_id, region_id" % (region_id)
+        query = "SELECT plant_name, rust_resist, nematode_resist, altitude, rainfall, temp, region FROM Regions " \
+                "JOIN Varieties ON Regions.altitude = Varieties.optimal_altitude " \
+                "AND Regions.rainfall = Varieties.optimal_rainfall AND Regions.temp = Varieties.optimal_temp " \
+                "WHERE Regions.region_id = %s ORDER BY plant_id, region_id" % (region_id)
     cursor = db.execute_query(db_connection=db_connection, query=query)
     results = cursor.fetchall()
 
     # For Search function, populate dropdown with all regions
-    query2 = "SELECT DISTINCT region_id, region FROM Regions JOIN Varieties ON Regions.altitude = Varieties.optimal_altitude AND Regions.rainfall = Varieties.optimal_rainfall AND Regions.temp = Varieties.optimal_temp ORDER BY region"
+    query2 = "SELECT DISTINCT region_id, region FROM Regions " \
+             "JOIN Varieties ON Regions.altitude = Varieties.optimal_altitude " \
+             "AND Regions.rainfall = Varieties.optimal_rainfall AND Regions.temp = Varieties.optimal_temp " \
+             "ORDER BY region"
     cursor = db.execute_query(db_connection=db_connection, query=query2)
     region_list = cursor.fetchall()
 

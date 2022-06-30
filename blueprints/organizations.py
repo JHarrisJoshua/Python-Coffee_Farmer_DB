@@ -34,8 +34,10 @@ def organizations_add():
             name = request.form["name"]
             org_type = request.form["type"]
 
-            query = "INSERT INTO Organizations (org_name, org_type) VALUES (%s, %s)"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(name, org_type))
+            query = "INSERT INTO Organizations (org_name, org_type) " \
+                    "VALUES (%s, %s)"
+            cursor = db.execute_query(db_connection=db_connection, query=query,
+                                      query_params=(name, org_type))
                         
             # redirect to organizations page
             return redirect("/organizations")

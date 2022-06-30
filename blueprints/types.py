@@ -35,7 +35,8 @@ def varieties_add():
             desc = request.form["desc"]
 
             query = "INSERT INTO Types (type_name, description) VALUES (%s, %s)"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(name, desc))
+            cursor = db.execute_query(db_connection=db_connection, query=query,
+                                      query_params=(name, desc))
                         
             # redirect to types page
             return redirect("/types")

@@ -13,7 +13,9 @@ regions_view = Blueprint('regions_view', __name__)
 @regions_view.route('/')
 def regions():
     db_connection = db.connect_to_database()
-    query = "SELECT region_id, region, soil_type, altitude, rainfall, temp, Countries.country FROM Regions INNER JOIN Countries ON Regions.country_id = Countries.country_id ORDER BY region_id;"
+    query = "SELECT region_id, region, soil_type, altitude, rainfall, temp, Countries.country " \
+            "FROM Regions INNER JOIN Countries ON Regions.country_id = Countries.country_id " \
+            "ORDER BY region_id;"
     cursor = db.execute_query(db_connection=db_connection, query=query)
     results = cursor.fetchall()
     return render_template("regions.j2", regions=results)
@@ -42,8 +44,10 @@ def regions_add():
             temp = request.form["temperature"]
             country_id = request.form["country_id"]
 
-            query = "INSERT INTO Regions (region, soil_type, altitude, rainfall, temp, country_id) VALUES (%s, %s, %s, %s, %s, %s)"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(name, soil, altitude, rain, temp, country_id))
+            query = "INSERT INTO Regions (region, soil_type, altitude, rainfall, temp, country_id) " \
+                    "VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor = db.execute_query(db_connection=db_connection, query=query,
+                                      query_params=(name, soil, altitude, rain, temp, country_id))
 
             # redirect to regions page
             return redirect("/regions")
@@ -56,7 +60,9 @@ def regions_edit(region_id):
 
     # Retrieve info update/dropdowns
     if request.method == "GET":
-        query = "SELECT region_id, region, soil_type, altitude, rainfall, temp, Countries.country FROM Regions INNER JOIN Countries ON Regions.country_id = Countries.country_id ORDER BY region_id; WHERE region_id = %s" % (region_id)
+        query = "SELECT region_id, region, soil_type, altitude, rainfall, temp, Countries.country " \
+                "FROM Regions INNER JOIN Countries ON Regions.country_id = Countries.country_id " \
+                "WHERE region_id = %s" % (region_id)
         cursor = db.execute_query(db_connection=db_connection, query=query)
         results = cursor.fetchall()
 
@@ -76,8 +82,10 @@ def regions_edit(region_id):
             temp = request.form["temp"]
             country_id = request.form["country_id"]
 
-            query = "UPDATE Regions SET region = %s, soil_type = %s,  altitude = %s, rainfall = %s, temp = %s, country_id = %s WHERE region_id = %s"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(region, soil, alt, rainfall, temp, country_id, region_id))
+            query = "UPDATE Regions SET region = %s, soil_type = %s,  altitude = %s, " \
+                    "rainfall = %s, temp = %s, country_id = %s WHERE region_id = %s"
+            cursor = db.execute_query(db_connection=db_connection, query=query,
+                                      query_params=(region, soil, alt, rainfall, temp, country_id, region_id))
 
             # Redirect to varieties page
             return redirect("/regions")

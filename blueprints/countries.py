@@ -38,8 +38,10 @@ def countries_add():
             export_usd = request.form["exportusd"]
             area = request.form["area"]
 
-            query = "INSERT INTO Countries (country, export_quantity, export_usd, cultivated_area) VALUES (%s, %s, %s, %s)"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(country, export_qty, export_usd, area))
+            query = "INSERT INTO Countries (country, export_quantity, export_usd, cultivated_area)" \
+                    " VALUES (%s, %s, %s, %s)"
+            cursor = db.execute_query(db_connection=db_connection, query=query,
+                                      query_params=(country, export_qty, export_usd, area))
                         
             # redirect to countries page
             return redirect("/countries")
