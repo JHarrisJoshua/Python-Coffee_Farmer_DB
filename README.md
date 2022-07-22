@@ -15,7 +15,7 @@ The database represents information about the farming and cultivation of genetic
 ### Heroku Link
 The application is hosted on Heroku. Use the following link to view the project.
 
-https://coffee-farmers-almanac.herokuapp.com/regions-varieties/
+https://coffee-farmers-almanac.herokuapp.com/
 
 ### Framework
 The app is implemented using Python, Flask, and SQL. While the database was originally housed in MariaDB(an open-source fork of MySQL), the database was migrated to PostgreSQL for deployment on Heroku. The data was also stored and tested locally using MySQL.   
