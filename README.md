@@ -26,6 +26,6 @@ The app is implemented using Python, Flask, and SQL. While the database was orig
 
 ## ERD
 
-The following relationship diagram was created using MySQL Workbench. For purposes of hosting on Heroku, the database was migrated to PostgreSQL.
+The following relationship diagram was created using MySQL Workbench (Database > Reverse Engineer...). For purposes of hosting on Heroku, the database was migrated to PostgreSQL.
 
 ![image](https://user-images.githubusercontent.com/81477294/173967204-1e267163-f0ee-43de-8b41-870a50c8fde2.png)
