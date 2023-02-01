@@ -9,7 +9,7 @@
 ## Overview
 ### Description
 A web application that facilitates the CRUD operations for a database from the perspective of a database administrator (i.e. non-client facing).
-The database represents information about the farming and cultivation of genetic varieties of coffee and the agricultural conditions of various coffee-growing regions. The database is intended to enable coffee farmers to select plants based on their region and speficic challenges, from pests to climate conditions.
+The database represents information about the farming and cultivation of genetic varieties of coffee and the agricultural conditions of various coffee-growing regions. The database is intended to enable coffee farmers to select plants based on their region and specific challenges, from pests to climate conditions.
 
 ## Web App
 ### Heroku
