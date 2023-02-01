@@ -12,12 +12,14 @@ A web application that facilitates the CRUD operations for a database from the p
 The database represents information about the farming and cultivation of genetic varieties of coffee and the agricultural conditions of various coffee-growing regions. The database is intended to enable coffee farmers to select plants based on their region and speficic challenges, from pests to climate conditions.
 
 ## Web App
-### Heroku Link
-The application is hosted on Heroku. Use the following link to view the project.
+### Heroku
+The application was hosted on Heroku. RIP Heroku free tier. If I get time I plan on migrating the project. I plan on spiking a few free-tier providers to see which I like best.  
 
+<!--- 
 https://coffee-farmers-almanac.herokuapp.com/
 
-* Note that Heroku puts the app to sleep after 30 minutes of inactivity. Visiting the site will load the app from sleep, which results in noticeable lag for the first visit. Subsequent visits will not require booting the app. There are ways to mitigate this, and in production, the app would be run on a higher service tier.
+// Note that Heroku puts the app to sleep after 30 minutes of inactivity. Visiting the site will load the app from sleep, which results in noticeable lag for the first visit. Subsequent visits will not require booting the app. There are ways to mitigate this, and in production, the app would be run on a higher service tier.
+--->
 
 ### Framework
 The app is implemented using Python, Flask, and SQL. While the database was originally housed in MariaDB(an open-source fork of MySQL), the database was migrated to PostgreSQL for deployment on Heroku. The data was also stored and tested locally using MySQL.   
